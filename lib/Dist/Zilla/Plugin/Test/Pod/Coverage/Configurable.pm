@@ -191,6 +191,8 @@ __PACKAGE__->meta->make_immutable;
 
 # ABSTRACT: dzil pod coverage tests with configurable parameters
 
+__END__
+
 =pod
 
 =encoding UTF-8
@@ -216,7 +218,7 @@ This is a L<Dist::Zilla> plugin that creates a POD coverage test for your
 distro. Unlike the plugin that ships with dzil in core, this one is quite
 configurable. The coverage test is generated as F<xt/release/pod-coverage.t>.
 
-L<Test::Pod::Coverage> C<1.08>, L<Test::More> C<0.88), and
+L<Test::Pod::Coverage> C<1.08>, L<Test::More> C<0.88>, and
 L<Pod::Coverage::TrustPod> will be added as C<develop requires> dependencies.
 
 =head1 CONFIGURATION
