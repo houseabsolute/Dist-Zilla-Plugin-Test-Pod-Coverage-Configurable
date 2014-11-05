@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable - dzil pod coverage tests
 
 # VERSION
 
-version 0.01
+version 0.02
 
 # SYNOPSIS
 
