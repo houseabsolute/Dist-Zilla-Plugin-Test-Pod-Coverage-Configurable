@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.02     2014-11-05
+
 - Make the generated test file skip all on Perl 5.8.8 or
   lower. Pod::Coverage::TrustPod only installs with 5.8.9+. This is probably
   not relevant to most people, but it's useful if you're testing with ancient
