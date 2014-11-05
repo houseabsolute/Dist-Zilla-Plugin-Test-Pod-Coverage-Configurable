@@ -79,6 +79,12 @@ my $head = <<'EOF';
 
 use Test::Pod::Coverage 1.08;
 use Test::More 0.88;
+
+BEGIN {
+    if ( $] <= 5.008008 ) {
+        plan skip_all => 'These tests require Pod::Coverage::TrustPod, which only works with Perl 5.8.9+';
+    }
+}
 use Pod::Coverage::TrustPod;
 EOF
 
