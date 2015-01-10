@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+- Removed some unused imports.
+
+
 0.02     2014-11-05
 
 - Make the generated test file skip all on Perl 5.8.8 or
