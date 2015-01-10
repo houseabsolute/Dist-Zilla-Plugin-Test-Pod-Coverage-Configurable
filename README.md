@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable - dzil pod coverage tests
 
 # VERSION
 
-version 0.02
+version 0.03
 
 # SYNOPSIS
 
@@ -68,7 +68,7 @@ Dave Rolsky <autarch@urth.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2015 by Dave Rolsky.
+This software is Copyright (c) 2014 - 2015 by Dave Rolsky.
 
 This is free software, licensed under:
 
