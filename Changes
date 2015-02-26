@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.04     2015-02-26
+
 - If you specify a class other than Pod::Coverage::TrustPod as the coverage
   class, then the specified class will be added to the "develop requires"
   prereqs.
