@@ -156,7 +156,8 @@ EOF
         my $qr;
 
         {
-            local $@;
+            local $@ = q{};
+            ## no critic (BuiltinFunctions::ProhibitStringyEval)
             $qr = eval $regex;
             if ($@) {
                 die "Invalid regex in trustme for $module: $regex\n  $@\n";
@@ -167,7 +168,8 @@ EOF
     }
 
     if ( keys %trustme ) {
-        my $trustme_dump = Data::Dumper->new( [ \%trustme ], ['*trustme'] )->Dump;
+        my $trustme_dump
+            = Data::Dumper->new( [ \%trustme ], ['*trustme'] )->Dump;
         $content .= "\nmy $trustme_dump";
     }
     else {
