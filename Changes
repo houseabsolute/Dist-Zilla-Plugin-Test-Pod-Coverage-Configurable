@@ -1,5 +1,10 @@
 {{$NEXT}}
 
+- If you specify a class other than Pod::Coverage::TrustPod as the coverage
+  class, then the specified class will be added to the "develop requires"
+  prereqs.
+
+
 0.03     2015-01-10
 
 - Removed some unused imports.

@@ -41,14 +41,18 @@ sub mvp_multivalue_args {
 sub register_prereqs {
     my ($self) = @_;
 
+    my %prereqs = (
+        'Test::Pod::Coverage'     => '1.08',
+        'Test::More'              => '0.88',
+        'Pod::Coverage::TrustPod' => 0,
+        $self->class()            => 0,
+    );
     $self->zilla->register_prereqs(
         {
             type  => 'requires',
             phase => 'develop',
         },
-        'Test::Pod::Coverage'     => '1.08',
-        'Test::More'              => '0.88',
-        'Pod::Coverage::TrustPod' => 0,
+        %prereqs,
     );
 }
 
