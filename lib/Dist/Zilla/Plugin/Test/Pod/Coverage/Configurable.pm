@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use namespace::autoclean;
 
+our $VERSION = '0.04';
+
 use Data::Dumper ();
 use Dist::Zilla::File::InMemory;
 
