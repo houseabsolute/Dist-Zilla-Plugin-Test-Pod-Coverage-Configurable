@@ -1,5 +1,9 @@
 {{$NEXT}}
 
+- Added an "also_private" config parameter, which is passed on to
+  Pod::Coverage. Implemented by David Golden.
+
+
 0.04     2015-02-26
 
 - If you specify a class other than Pod::Coverage::TrustPod as the coverage

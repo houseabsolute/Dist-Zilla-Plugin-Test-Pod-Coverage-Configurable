@@ -29,13 +29,19 @@ has trustme => (
     default => sub { [] },
 );
 
+has also_private => (
+    is      => 'ro',
+    isa     => 'ArrayRef',
+    default => sub { [] },
+);
+
 with qw(
     Dist::Zilla::Role::FileGatherer
     Dist::Zilla::Role::PrereqSource
 );
 
 sub mvp_multivalue_args {
-    return qw( skip trustme );
+    return qw( skip trustme also_private );
 }
 
 # Register the release test prereq as a "develop requires"
@@ -176,6 +182,30 @@ EOF
         $content .= "\nmy %trustme = ();\n";
     }
 
+
+    my @also_private;
+    for my $pvt ( @{ $self->also_private() } ) {
+        if ( $pvt =~ /^qr/ ) {
+            my $re = eval $pvt;
+            if ($@) {
+                die "Invalid regex in also_private: $pvt\n  $@\n";
+            }
+            push @also_private, $re;
+        }
+        else {
+            push @also_private, qr/^\Q$pvt\E$/;
+        }
+    }
+
+    if ( @also_private ) {
+        my $also_private_dump
+            = Data::Dumper->new( [ \@also_private ], ['*also_private'] )->Dump;
+        $content .= "\nmy $also_private_dump";
+    }
+    else {
+        $content .= "\nmy \@also_private;\n";
+    }
+
     $content .= <<"EOF";
 
 for my \$module ( sort \@modules ) {
@@ -183,6 +213,7 @@ for my \$module ( sort \@modules ) {
         \$module,
         {
             coverage_class => '$class',
+            also_private   => \\\@also_private,
             trustme        => \$trustme{\$module} || [],
         },
         "pod coverage for \$module"
@@ -221,6 +252,8 @@ Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable - a configurable release 
   skip = Dist::Other::Module
   skip = Dist::YA::Module
   skip = qr/^Dist::Foo/
+  also_private = BUILDARGS
+  also_private = qr/^ERR_/
 
 =head1 DESCRIPTION
 
@@ -261,6 +294,13 @@ modules defined here will be skipped entirely when testing POD coverage.
 This parameter allows you to specify regexes for methods that should be
 considered coverage on a per-module basis. The parameter is provided in the
 form C<< Module::Name => qr/^regex/ >>. You can include the same module name
+multiple times.
+
+=head2 also_private
+
+This parameter allows you to specify regexes for methods that should be
+considered private. You can provide it as a plain method name string or as a
+regular expression of the form C<qr/^regex/>. You can specify this parameter
 multiple times.
 
 =cut
