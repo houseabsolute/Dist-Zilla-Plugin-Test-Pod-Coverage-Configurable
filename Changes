@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.05     2015-03-25
+
 - Added an "also_private" config parameter, which is passed on to
   Pod::Coverage. Implemented by David Golden.
 
