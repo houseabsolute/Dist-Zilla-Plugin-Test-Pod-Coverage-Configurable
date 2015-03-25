@@ -182,11 +182,12 @@ EOF
         $content .= "\nmy %trustme = ();\n";
     }
 
-
     my @also_private;
     for my $pvt ( @{ $self->also_private() } ) {
         if ( $pvt =~ /^qr/ ) {
+            ## no critic (BuiltinFunctions::ProhibitStringyEval)
             my $re = eval $pvt;
+            ## use critic
             if ($@) {
                 die "Invalid regex in also_private: $pvt\n  $@\n";
             }
@@ -197,9 +198,10 @@ EOF
         }
     }
 
-    if ( @also_private ) {
+    if (@also_private) {
         my $also_private_dump
-            = Data::Dumper->new( [ \@also_private ], ['*also_private'] )->Dump;
+            = Data::Dumper->new( [ \@also_private ], ['*also_private'] )
+            ->Dump;
         $content .= "\nmy $also_private_dump";
     }
     else {
