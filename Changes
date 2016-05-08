@@ -1,5 +1,8 @@
 {{$NEXT}}
 
+- The added test is not added in xt/author instead of xt/release.
+
+
 0.05     2015-03-25
 
 - Added an "also_private" config parameter, which is passed on to

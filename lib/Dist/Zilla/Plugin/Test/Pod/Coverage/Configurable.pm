@@ -72,7 +72,7 @@ sub gather_files {
     $self->add_file(
         Dist::Zilla::File::InMemory->new(
             {
-                name    => 'xt/release/pod-coverage.t',
+                name    => 'xt/author/pod-coverage.t',
                 content => $content,
             }
         ),
