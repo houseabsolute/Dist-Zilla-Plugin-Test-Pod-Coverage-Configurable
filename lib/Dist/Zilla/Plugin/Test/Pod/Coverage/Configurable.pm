@@ -44,8 +44,8 @@ sub mvp_multivalue_args {
     return qw( skip trustme also_private );
 }
 
-# Register the release test prereq as a "develop requires"
-# so it will be listed in "dzil listdeps --author"
+# Register the author test prereq as a "develop requires" so it will be listed
+# in "dzil listdeps --author"
 sub register_prereqs {
     my ($self) = @_;
 
@@ -242,7 +242,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable - a configurable release test for Pod coverage
+Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable - a configurable author test for Pod coverage
 
 =head1 SYNOPSIS
 
@@ -261,7 +261,7 @@ Dist::Zilla::Plugin::Test::Pod::Coverage::Configurable - a configurable release 
 
 This is a L<Dist::Zilla> plugin that creates a POD coverage test for your
 distro. Unlike the plugin that ships with dzil in core, this one is quite
-configurable. The coverage test is generated as F<xt/release/pod-coverage.t>.
+configurable. The coverage test is generated as F<xt/author/pod-coverage.t>.
 
 L<Test::Pod::Coverage> C<1.08>, L<Test::More> C<0.88>, and
 L<Pod::Coverage::TrustPod> will be added as C<develop requires> dependencies.
