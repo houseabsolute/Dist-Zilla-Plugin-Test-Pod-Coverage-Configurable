@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.07     2018-01-09
+
 - Include the plugin version in the comment at the top of the generated test
   file. Implemented by Karen Etheridge. GH #2.
 
