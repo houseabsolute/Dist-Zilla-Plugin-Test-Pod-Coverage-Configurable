@@ -176,7 +176,8 @@ EOF
 
     if ( keys %trustme ) {
         my $trustme_dump
-            = Data::Dumper->new( [ \%trustme ], ['*trustme'] )->Dump;
+            = Data::Dumper->new( [ \%trustme ], ['*trustme'] )->Sortkeys(1)
+            ->Dump;
         $content .= "\nmy $trustme_dump";
     }
     else {
